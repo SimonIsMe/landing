@@ -1,0 +1,528 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Przeglądaj artykuły</title>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:600,500,400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:600,500,400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+        <link rel="stylesheet" href="/style/index.css">
+        <link rel="stylesheet" href="/style/index_db.css">
+        <link rel="stylesheet" href="/style/index_code.css">
+        <script type="text/javascript" src="/js/index.js"></script>
+    </head>
+    <body>
+        <div id="top">
+            <div class="container">
+                <ul id="links">
+                    <li id="home-link" onClick="goTo(0, 0)" class="active"><i class="fa fa-home"></i></li>
+                    <li id="db-link" onClick="goTo('#db', 1)">Baza danych</li>
+                    <li id="communication-link" onClick="goTo('#communication', 2)">Komunikacja</li>
+                    <li id="search-link" onClick="goTo('#search', 3)">Wyszukiwarka</li>
+                    <li id="own-server-link" onClick="goTo('#own-server', 4)">serwer</li>
+                    <li id="load-balancer-link" onClick="goTo('#load-balancer', 5)">Balansowanie zużycia</li>
+                    <li id="mails-link" onClick="goTo('#mails', 6)">Maile</li>
+                    <li id="login-link" onClick="goTo('#login', 7)">Logowanie</li>
+                    <li id="contact-section-link" onClick="goTo('#contact-section', 8)">Kontakt</li>
+                </ul>
+                <div class="clr"></div>
+            </div>
+        </div>
+        <div id="server">
+            <div id="server-glass">
+                <div id="title-container">
+                    <div id="left-arrow"><i class="fa fa-angle-left"></i></div>
+                    <h1>
+                        <div id="title-left">My zajmiemy się backend'em, </div>
+                        <div id="title-right">Ty zajmiesz się
+                            <span id="options">
+                                <span>
+                                    <b>spotkaniami sprzedażowym</b>.
+                                </span>
+                                <span class="active">
+                                    <b>frontend'em</b>.
+                                </span>
+                                <span>
+                                    <b>usability</b>.
+                                </span>
+                                <span>
+                                    <b>zespołem</b>.
+                                </span>
+                                <span>
+                                    <b>zarabianiem</b>.
+                                </span>
+                            </span>
+                        </div>
+                    </h1>
+                    <div id="right-arrow"><i class="fa fa-angle-right"></i></div>
+                </div>
+                <h3 id="about">
+                    <b>noBackend</b> to zbiór narzędzi przyspieszających <br />
+                    tworzenie <b>aplikacji internetowych czasu rzeczywistego</b>.
+                </h3>
+                <div id="main-join" class="btn" onClick="goTo('#register')">Zapisz się do testów</div>
+            </div>
+        </div>
+
+        <div id="db" class="section darker">
+            <div class="container">
+                <div class="icon"><i class="fa fa-database"></i></div>
+                <div class="component-no">Pierwsze narzędzie</div>
+                <h2>Baza danych</h2>
+                <div class="intro-container">
+                    <div class="line"></div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <h3>Główne cechy</h3>
+                        <div class="list-item">
+                            <div class="list-item-icon">1</div>
+                            <div class="list-item-content">
+                                Dostęp do bazy <b>z JavaScript'u</b>.<br />
+                                Za pomocą poniższego kodu pobierzesz artykuł z bazy danych i go zaktualizujesz.
+                                <div class="code">
+                                    <span class="comment">//  pobieramy artykuł z bazy o ID = 178</span><br />
+                                    var <span class="var">article</span> = new <span class="model">Article</span>(<span class="val">178</span>);<br /><br />
+                                    <span class="comment">//  wyświetlamy tytuł</span><br />
+                                    console.log(<span class="var">article</span>.<span class="attr">title</span>);<br /><br />
+
+                                    <span class="comment">//  zmieniamy tytuł</span><br />
+                                    <span class="var">article</span>.<span class="attr">title</span> = <span class="val">'Nowy tytuł'</span>;<br /><br />
+
+                                    <span class="comment">//  zapisujemy zmiany</span><br />
+                                    <span class="var">article</span>.<span class="attr">save()</span>;
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">2</div>
+                            <div class="list-item-content">
+                                Baza danych <b>informuje o zmianach</b>.<br />
+                                Każdy model posiada metodę <span class="code">onChange()</span> nasłuchującą zmian.
+                                <div class="code">
+                                    <span class="var">article</span>.<span class="attr">onChange</span>()<br />
+                                    {<br />
+                                        adsf<br />
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">3</div>
+                            <div class="list-item-content">
+                                Każda operacja przechodzi walidację i sprawdzenie uprawnień -
+                                <b>nikt niepowołany nie może dokonać zmian</b>.
+                            </div>
+                        </div>
+                        <hr style="margin-top:40px;"/>
+
+                    </div>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <h3>Przykład użycia</h3>
+                        <p class="text-center">
+                            Oto strona z artykułami uruchominą na dwóch urządzeniach.<br />
+                            Możesz swobodnie dodawać i edytować artykuły, które są zapisywane w bazie dancyh..
+                        </p>
+                    </div>
+                    <div class="clr"></div>
+
+                    <div id="db-example-container">
+                        <div id="db-image"></div>
+                        <div id="db-status">
+                            <h5>BAZA DANYCH</h5>
+                            <b>Status:</b> 10 artykułów<br />
+                            <b>Oatatnia zmiana:</b> brak<br />
+                            <b>Podłączonych użytkowników:</b> 2<br />
+                        </div>
+
+
+                        <div id="db-device-1">
+                            <h5>Urządzenie 1</h5>
+                            <iframe src="/db/aaa"></iframe>
+                        </div>
+                        <div id="db-device-2">
+                            <h5>Urządzenie 2</h5>
+                            <iframe src="/db/aaa"></iframe>
+                        </div>
+
+                        <div id="db-qr-code-container">
+                            <div id="db-pop-up-link">
+                                <h5>Otwórz stronę w nowej zakładce</h5>
+                                <br />
+                                <a href="#" >http://goo.gl/as3dfu133</a>
+                            </div>
+                            <div id="db-qr-code">
+                                <h5>Otwórz na swoim telefonie</h5>
+                                <img src="http://pl.qr-code-generator.com/phpqrcode/getCode.php?cht=qr&chl=asdfasdfasdfsadfasfasdfasdfasdfsadf&chs=180x180&choe=UTF-8&chld=L|0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="communication" class="section">
+            <div id="communication-section-img"></div>
+            <div class="container">
+                <div class="icon"><i class="fa fa-comments-o"></i></div>
+                <div class="component-no">Drugie narzędzie</div>
+                <h2>Kanały komunikacyjne</h2>
+                <div class="intro-container">
+                    <div class="line"></div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <h3>Główne cechy</h3>
+                        <div class="list-item">
+                            <div class="list-item-icon">1</div>
+                            <div class="list-item-content">Użytkownicy mogą przesyłać między sobą komunikaty</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">2</div>
+                            <div class="list-item-content">Może istnieć wiele kanałów do komunikacji, np. notifikacje, komunikator, itp. </div>
+                        </div>
+                        <hr style="margin-top:40px;" />
+                    </div>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <h3>Przykład użycia</h3>
+                        asdasd
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="search" class="section darker">
+            <div class="container">
+                <div class="container">
+                    <div class="icon"><i class="fa fa-search"></i></div>
+                    <div class="component-no">Trzecie narzędzie</div>
+                    <h2>Wyszukiwarka</h2>
+                    <div class="intro-container">
+                        <div class="line"></div>
+                    </div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <h3>Główne cechy</h3>
+                        <div class="list-item">
+                            <div class="list-item-icon">1</div>
+                            <div class="list-item-content">W Panelu Administracyjnym definiujesz parametry wyszukiwania.</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">2</div>
+                            <div class="list-item-content">Na swojej stronie zamieszczasz kod JavaScript, który obsłuży wyszukiwanie.</div>
+                        </div>
+                        <hr style="margin-top:40px;" />
+                    </div>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <h3>Przykład użycia</h3>
+                        asdasd
+                    </div>
+                    <div class="clr"></div>
+                </div>
+
+
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <div class="list-item">
+                            <div class="list-item-icon">1</div>
+                            <div class="list-item-content">Zdefiniuj parametry wyszukiwania.</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">2</div>
+                            <div class="list-item-content">Zapisz je pod dowolną nazwą.</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">3</div>
+                            <div class="list-item-content">
+                                Zamieść w aplikacji poniższy kod i masz w pełni funkcjonalną wyszukiwarkę!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="own-server" class="section">
+            <div class="container">
+                <div class="container">
+                    <div class="icon"><i class="fa fa-server"></i></div>
+                    <div class="component-no">Czwarte narzędzie</div>
+                    <h2>Własny serwer</h2>
+                    <div class="intro-container">
+                        <div class="line"></div>
+                    </div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <h3>Główne cechy</h3>
+                        <div class="list-item">
+                            <div class="list-item-icon">1</div>
+                            <div class="list-item-content">Gdy musisz zrobić coś po stronie backendu możesz użyć do tego własnego serwera.</div>
+                        </div>
+                        <hr style="margin-top:40px;" />
+                    </div>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <h3>Przykład użycia</h3>
+                        asdasd
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="load-balancer" class="section darker">
+            <div class="container">
+                <div class="container">
+                    <div class="icon"><i class="fa fa-line-chart"></i></div>
+                    <h2>Balansowanie zużycia</h2>
+                    <div class="intro-container">
+                        <div class="line"></div>
+                        <div class="intro">
+                            Gdy Twój serwer nie daje rady, dołącz kolejny.<br />
+                            Ruch zostanie skierowany na nie po równo.
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mails" class="section">
+            <div id="contact-section-img"></div>
+            <div class="container">
+                <div class="container">
+                    <div class="icon"><i class="fa fa-envelope-o"></i></div>
+                    <div class="component-no">Piąte narzędzie</div>
+                    <h2>Wysyłanie e-maili</h2>
+                    <div class="intro-container">
+                        <div class="line"></div>
+                    </div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <h3>Główne cechy</h3>
+                        <div class="list-item">
+                            <div class="list-item-icon">1</div>
+                            <div class="list-item-content"><b>W Panelu Administracyjnym definiujesz skórki e-maili</b>, np. wiadomości rejestracyjne, newsletter lub informujące o nowym artykule.</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">2</div>
+                            <div class="list-item-content">
+                                <b>Tworzysz zdarzenia po których mają zostać wysłane wybrane e-maile</b>, np. rejestracja użytkownika lub dodanie nowego artykułu.
+                                <b>E-maile mogę być również wysyłane cykliczne</b>, np. codziennie o 5:00 rano.
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">3</div>
+                            <div class="list-item-content">
+                                Po wykonaniu zdarzenia e-mail jest wysyłany.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="login" class="section darker">
+            <div class="container">
+                <div class="container">
+                    <div class="icon"><i class="fa fa-users"></i></div>
+                    <div class="component-no">Szóste narzędzie</div>
+                    <h2>Logowanie i rejestracja</h2>
+                    <div class="intro-container">
+                        <div class="line"></div>
+                    </div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <h3>Główne cechy</h3>
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-sign-in"></i></div>
+                            <div class="list-item-content">My zajmiemy się <b>obsługą logowania i rejestracji użytkowników</b>.</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-envelope-o"></i></div>
+                            <div class="list-item-content">
+                                My zajmiemy się <b>wysyłaniem do nich e-maili aktywacyjnych</b>.
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-unlock-alt"></i></div>
+                            <div class="list-item-content">
+                                My zajmiemy się <b>przypominaniem hasła</b>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="container">
+                    <div class="icon"><i class="fa fa-check"></i></div>
+                    <h2>Co zyskujesz</h2>
+                    <div class="intro-container">
+                        <div class="line"></div>
+                    </div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2">
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-fighter-jet"></i></div>
+                            <div class="list-item-content"><b>Szybciej</b> budujesz <b>szybsze</b> strony.</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-code"></i></div>
+                            <div class="list-item-content">
+                                <b>Skupiasz się na frontend'zie</b> - pierwszej warstwie,
+                                z którą styczność ma użytkownik.
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-thumbs-o-up"></i></div>
+                            <div class="list-item-content">Ulepszasz <b>usability</b></div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-usd"></i></div>
+                            <div class="list-item-content">Oszczędzasz 2 najcenniejsze rzeczy: <b>czas i pieniądze</b>.</div>
+                        </div>
+                    </div>
+                    <div class="col-1-2">
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-clock-o"></i></div>
+                            <div class="list-item-content">Masz więcej czasu na budowę <b>nowych funkcjonalności</b>.</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-puzzle-piece"></i></div>
+                            <div class="list-item-content">Skupiasz się na <b>rozwoju innych części produktu</b>.</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-black-tie"></i></div>
+                            <div class="list-item-content"><b>Budujesz lepszy wizerunek</b> w oczach klienta.</div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="register" class="section darker">
+            <div class="container">
+                <div class="container">
+                    <div class="icon"><i class="fa fa-check"></i></div>
+                    <h2>Zapisz się do zamkniętych beta-testów!</h2>
+                    <div class="intro-container">
+                        <div class="line"></div>
+                        <div class="intro">
+                            Chcemy rozwijać produkt razem z Tobą. Wspólnie!
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        Po zakończonych testach <b>każdy tester otrzyma</b>:
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-gift"></i></div>
+                            <div class="list-item-content">Fizyczny upominek</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon"><i class="fa fa-usd"></i></div>
+                            <div class="list-item-content">Darmowe konto w pełnej wersji</div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <form>
+                            <input type="email" placeholder="E-mail" />
+                            <input type="submit" value="Zapisz się" />
+                        </form>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact-section" class="section">
+            <div id="contact-section-img"></div>
+            <div class="container">
+                <div class="icon"><i class="fa fa-envelope-o"></i></div>
+                <form id="contact">
+                    <h2>
+                        Pytanie, zgłoszenie, kontakt?
+                    </h2>
+                    <div class="intro-container">
+                        <div class="line"></div>
+                    </div>
+
+                    <h3>
+                        Wyślij wiadomość na adres <a href="mailto:kontakt@noBackend.pl">kontakt@noBackend.pl</a> lub użyj formularza:
+                    </h3>
+
+                    <div class="column-container">
+                        <div class="col-1-2">
+                            <input type="text" placeholder="Imię" />
+                        </div>
+                        <div class="col-1-2">
+                            <input type="email" placeholder="E-mail" />
+                        </div>
+                        <div class="clr"></div>
+                        <textarea placeholder="Treść"></textarea>
+                        <input type="submit" value="Wyślij wiadomość" />
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+
+        <div id="join-us" class="btn" onClick="goTo('#register')">
+            Dołącz do nas!
+        </div>
+        <a href="https://docs.google.com/forms/d/1MZ1qGznv1IedrZtlfPeB1k9K9td1643mq0HJU7UMJYE/viewform" id="sur" class="btn">
+            Ankieta - co o tym myślisz?
+        </a>
+    </body>
+</html>

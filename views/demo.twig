@@ -1,0 +1,1226 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Przeglądaj artykuły</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+    <script src="js/lib/ace/ace.min.js"></script>
+    <script src="/js/demo.js"></script>
+    <script src="/js/db-preview.js"></script>
+    <script src="/js/email-preview.js"></script>
+    <link rel="stylesheet" href="/style/demo.css">
+    <link rel="stylesheet" href="/style/index_code.css">
+    <link rel="stylesheet" href="/style/db-preview.css">
+</head>
+<body>
+    <div id="page-container">
+        <ul class="tabs">
+            <li class="active">Podgląd strony</li>
+            <li>Panel Administracyjny</li>
+            <div class="clr"></div>
+        </ul>
+        <div class="tab-content-container">
+            <div class="tab-content active" style="margin-bottom:0;">
+                <ul class="tabs">
+                    <li class="active">1. instancja</li>
+                    <li>2. instancja</li>
+                    <li><i class="fa fa-plus"></i></li>
+                    <div class="clr"></div>
+                </ul>
+
+                <div class="tab-content-container" style="left:0;right:0;bottom:40px;top:41px;">
+                    <div class="tab-content active">
+                        1
+                    </div>
+                    <div class="tab-content">
+                        2
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" style="margin-bottom:0;">
+                <ul class="tabs">
+                    <li class="active">Baza danych</li>
+                    <li>Wyszukiwarka</li>
+                    <li>Kanały komunikacyjne</li>
+                    <li>Twoje serwery</li>
+                    <li>E-maile</li>
+                    <div class="clr"></div>
+                </ul>
+
+                <div class="tab-content-container" style="left:0;right:0;bottom:40px;top:41px;">
+                    <div class="tab-content active">
+                        <div class="column-container">
+                            <div class="col-1-2">
+                                <div class="col-inside border">
+                                    <h2><i class="fa fa-eye-slash"></i> Podgląd</h2>
+                                    <div id="db-preview">
+                                        <div class="table active" id="articles-table" data-details="db-details-articles">
+                                            <div class="table-name">articles</div>
+                                            <div class="table-column id" data-details="db-details-articles-id">
+                                                <i class="fa fa-key"></i>
+                                                id - int(11)
+                                            </div>
+                                            <div class="table-column" data-details="db-details-articles-title">title - varchar(255)</div>
+                                            <div class="table-column" data-details="db-details-articles-content">content - text</div>
+                                        </div>
+
+                                        <div class="table" id="users-table" data-details="db-details-users">
+                                            <div class="table-name">users</div>
+                                            <div class="table-column id" data-details="db-details-users-id">
+                                                <i class="fa fa-key"></i>
+                                                id - int(11)
+                                            </div>
+                                            <div class="table-column" data-details="db-details-users-email">email - varchar(255)</div>
+                                            <div class="table-column" data-details="db-details-users-password">password - text</div>
+                                            <div class="table-column" data-details="db-details-users-is-active">is_active - tinyint(1)</div>
+                                        </div>
+
+                                        <div class="table" id="comments-table" data-details="db-details-comments">
+                                            <div class="table-name">comments</div>
+                                            <div class="table-column id" data-details="db-details-comments-id">
+                                                <i class="fa fa-key"></i>
+                                                id - int(11)
+                                            </div>
+                                            <div class="table-column" data-details="db-details-comments-article-id">article_id - int(11)</div>
+                                            <div class="table-column" data-details="db-details-comments-user-id">user_id - int(11)</div>
+                                            <div class="table-column active" data-details="db-details-comments-content">content - varchar(255)</div>
+                                            <div class="table-column" data-details="db-details-comments-created-at">created_at - datetime</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-1-4">
+                                <div class="col-inside border">
+                                    <div class="section">
+                                        <h2><i class="fa fa-cogs"></i> Ustawienia</h2>
+                                        <div class="db-details" id="db-details-articles">
+                                            <h3>Tabela <b>articles</b></h3>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do czytania
+                                                </div>
+                                                <div class="right-element">
+                                                    wszyscy
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do dodawania
+                                                </div>
+                                                <div class="right-element">
+                                                    Grupa <b>admnis</b>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do edycji
+                                                </div>
+                                                <div class="right-element">
+                                                    Grupa <b>admnis</b>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do usuwania
+                                                </div>
+                                                <div class="right-element">
+                                                    Grupa <b>admnis</b>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-users">
+                                            <h3>Tabela <b>users</b></h3>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do czytania
+                                                </div>
+                                                <div class="right-element">
+                                                    wszyscy
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do dodawania
+                                                </div>
+                                                <div class="right-element">
+                                                    Grupa <b>admnis</b>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do edycji
+                                                </div>
+                                                <div class="right-element">
+                                                    Grupa <b>admnis</b>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do usuwania
+                                                </div>
+                                                <div class="right-element">
+                                                    Grupa <b>admnis</b>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-comments">
+                                            <h3>Tabela <b>comments</b></h3>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do czytania
+                                                </div>
+                                                <div class="right-element">
+                                                    wszyscy
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do dodawania
+                                                </div>
+                                                <div class="right-element">
+                                                    Grupa <b>admnis</b>
+                                                    Grupa <b>zalogowani</b>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do edycji
+                                                </div>
+                                                <div class="right-element">
+                                                    Grupa <b>admnis</b>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Upr. do usuwania
+                                                </div>
+                                                <div class="right-element">
+                                                    Grupa <b>admnis</b>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-articles-id">
+                                            <h3>Pole <b>articles.id</b></h3>
+                                            <div class="row">
+                                                Klucz główny tabeli <i>articles</i>.
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    integer
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Długość
+                                                </div>
+                                                <div class="right-element">
+                                                    11
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Autoincrement
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unsignet
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-articles-title">
+                                            <h3>Pole <b>articles.title</b></h3>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    varchar
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Długość
+                                                </div>
+                                                <div class="right-element">
+                                                    255
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-articles-content">
+                                            <h3>Pole <b>articles.content</b></h3>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    text
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-users-id">
+                                            <h3>Pole <b>users.id</b></h3>
+                                            <div class="row">
+                                                Klucz główny tabeli <i>users</i>.
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    integer
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Długość
+                                                </div>
+                                                <div class="right-element">
+                                                    11
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Autoincrement
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unsignet
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-users-email">
+                                            <h3>Pole <b>users.email</b></h3>
+                                            <div class="row">
+                                                Klucz główny tabeli <i>articles</i>.
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    varchar
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Długość
+                                                </div>
+                                                <div class="right-element">
+                                                    255
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <h3>Walidatory</h3>
+                                            <ul>
+                                                <li>Adres e-mail</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-users-password">
+                                            <h3>Pole <b>users.password</b></h3>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    varchar
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Długość
+                                                </div>
+                                                <div class="right-element">
+                                                    70
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                W tym polu przechowywane jest hasło.
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-users-is-active">
+                                            <h3>Pole <b>users.is_active</b></h3>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    tinyint
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Długość
+                                                </div>
+                                                <div class="right-element">
+                                                    1
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Domyślnie
+                                                </div>
+                                                <div class="right-element">
+                                                    <i>0</i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="db-details" id="db-details-comments-id">
+                                            <h3>Pole <b>comments.id</b></h3>
+                                            <div class="row">
+                                                Klucz główny tabeli <i>comments</i>.
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    integer
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Długość
+                                                </div>
+                                                <div class="right-element">
+                                                    11
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Autoincrement
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unsignet
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-comments-article-id">
+                                            <h3>Pole <b>comments.article_id</b></h3>
+                                            <div class="row">
+                                                Klucz obcy do pola <i>articles.id</i>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    integer
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Długość
+                                                </div>
+                                                <div class="right-element">
+                                                    11
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Autoincrement
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unsignet
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-comments-user-id">
+                                            <h3>Pole <b>comments.user_id</b></h3>
+                                            <div class="row">
+                                                Klucz obcy do pola <i>users.id</i>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    integer
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Długość
+                                                </div>
+                                                <div class="right-element">
+                                                    11
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Autoincrement
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unsignet
+                                                </div>
+                                                <div class="right-element">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-comments-content">
+                                            <h3>Pole <b>comments.content</b></h3>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    text
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-details" id="db-details-comments-created-at">
+                                            <h3>Pole <b>comments.created_at</b></h3>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Typ
+                                                </div>
+                                                <div class="right-element">
+                                                    datetime
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Domyślnie
+                                                </div>
+                                                <div class="right-element">
+                                                    <i>NOW()</i>
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Nullable
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="left-element">
+                                                    Unique
+                                                </div>
+                                                <div class="right-element">
+                                                    nie
+                                                </div>
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-1-4">
+                                <div class="col-inside">
+                                    <div class="section border">
+                                        <h2><i class="fa fa-pie-chart"></i> Statystyki</h2>
+                                        <div class="row">
+                                            <div class="left-element">
+                                                Aktywnych połączeń klienckich
+                                            </div>
+                                            <div class="right-element">
+                                                12
+                                            </div>
+                                            <div class="clr"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="left-element">
+                                                Aktywnych połączeń serwerowych
+                                            </div>
+                                            <div class="right-element">
+                                                1
+                                            </div>
+                                            <div class="clr"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="section">
+                                        <h2><i class="fa fa-bars"></i> Ostatnie czynności</h2>
+                                        <ul>
+                                            <li>Aktualizacja rekordu <b>Article</b> ID=123</li>
+                                            <li>Aktualizacja rekordu <b>Users</b> ID=45</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="clr"></div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="column-container">
+                            <div class="col-1-4">
+                                <div class="col-inside border">
+                                    <div class="section">
+                                        <h2><i class="fa fa-bars"></i> Lista</h2>
+                                        <ul>
+                                            <li>Artykuy <i class="fa fa-pencil"></i></li>
+                                            <li>Komentarze</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1-4">
+                                <div class="col-inside border">
+                                    <div class="section">
+                                        <h2><i class="fa fa-cogs"></i> Ustawienia</h2>
+                                        <form>
+                                            <div class="field-container">
+                                                <div class="label">Nazwa wyszukiwarki</div>
+                                                <input type="text" name="search_name" />
+                                            </div>
+
+                                            <div class="field-container">
+                                                <div class="label">Pola do wyszukiwania</div>
+                                                Tabela <b>articles</b>: <br />
+                                                <input type="checkbox" /> id<br />
+                                                <input type="checkbox" /> title<br />
+                                                <input type="checkbox" /> content<br /><br />
+
+                                                Tabela <b>comments</b>: <br />
+                                                <input type="checkbox" /> id<br />
+                                                <input type="checkbox" /> article_id<br />
+                                                <input type="checkbox" /> user_id<br />
+                                                <input type="checkbox" /> content<br />
+                                                <input type="checkbox" /> created_at<br /><br />
+
+                                                Tabela <b>users</b>: <br />
+                                                <input type="checkbox" /> id<br />
+                                                <input type="checkbox" /> email<br />
+                                                <input type="checkbox" /> created_at<br />
+                                            </div>
+
+                                            <div class="field-container">
+                                                <div class="label">Podatność na literówki</div>
+                                                <input type="radio" name="fuzzy" value="0" /> 0 - brak literówek <br />
+                                                <input type="radio" name="fuzzy" value="1" /> 1 znak<br />
+                                                <input type="radio" name="fuzzy" value="2" /> 2 znaki<br />
+                                                <input type="radio" name="fuzzy" value="3" /> 3 znaki<br />
+                                                <input type="radio" name="fuzzy" value="4" /> 4 znaki<br />
+                                                <input type="radio" name="fuzzy" value="5" /> 5 znaków<br />
+                                            </div>
+
+                                            <div class="field-container">
+                                                <div class="label">Tokenizer</div>
+                                                <input type="radio" name="tokenizer" value="0" /> domyślny<br />
+                                                <input type="radio" name="tokenizer" value="0" /> literowy<br />
+                                                <input type="radio" name="tokenizer" value="0" /> 5 znaków<br />
+                                            </div>
+
+                                            <div class="field-container">
+                                                <div class="label">Token filter</div>
+                                                <input type="radio" name="tokenizer" value="0" /> domyślny<br />
+                                                <input type="radio" name="tokenizer" value="0" /> ASCII<br />
+                                                <input type="radio" name="tokenizer" value="0" /> Trim<br />
+                                            </div>
+
+                                            <div class="field-container">
+                                                <div class="label">Język</div>
+                                                <select name="language">
+                                                    <option value="pl selected">polski</option>
+                                                    <option value="pl">angielski</option>
+                                                    <option value="pl">niemiecki</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="field-container">
+                                                <input type="submit" value="Zapisz" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1-2">
+                                <div class="col-inside">
+                                    <h2><i class="fa fa-pie-chart"></i> Statystyki</h2>
+                                </div>
+                            </div>
+                            <div class="clr"></div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="column-container">
+                            <div class="col-1-4">lista kanałów</div>
+                            <div class="clr"></div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="column-container">
+                            <div class="col-1-4">lista</div>
+                            <div class="col-1-4">ustawienia</div>
+                            <div class="col-1-2">statystyki</div>
+                            <div class="clr"></div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="column-container">
+                            <div class="col-1-4">
+                                <div class="col-inside border">
+                                    <div class="section">
+                                        <h2><i class="fa fa-bars"></i> Lista</h2>
+                                        <ul class="link-list">
+                                            <li>Rejestracja</li>
+                                            <li>Przypomnienie o aktywacji konta</li>
+                                            <li class="active">Newsletter</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1-2">
+                                <div class="col-inside border">
+                                    <div class="section">
+                                        <h2><i class="fa fa-eye-slash"></i> Podgląd</h2>
+                                        <ul class="tabs">
+                                            <li class="active">Podgląd</li>
+                                            <li>Kod HTML</li>
+                                            <div class="clr"></div>
+                                        </ul>
+                                        <div class="tab-content-container" style="right:10px;top:83px">
+                                            <div class="tab-content active" style="height:auto">
+                                                <b>Wyświetl jako:</b> Jan Kowalski (jan.kowalski@domena.pl) - <a href="#">zmień</a>
+                                                <input type="text" placeholder="Tytuł wiadomości" value="Czy masz już odpowiednie narzędzie do przechowywania swoich notatek?" />
+                                                <div id="email-preview">
+                                                    <p style="color:#811881;font-weight:bold;font-size:18px;">
+                                                        Cześć Jan!
+                                                    </p>
+                                                    <p>
+                                                        Specjalnie dla Ciebie i Twojego zespołu przygotowaliśmy
+                                                        zestaw 4 niesamowitych narzędzi do przechowywania notatek.
+                                                    </p>
+                                                    <p>
+                                                        <div style="color:green;font-weight:bold;font-size:16px;">Google Keep</div>
+                                                        Notatki i listy w jednym miejscu. Bardzo proste narzędzie.
+                                                    </p>
+                                                    <p>
+                                                        <div style="color:green;font-weight:bold;font-size:16px;">Evernote</div>
+                                                        Bardziej rozbudowane narzędzie. Umożliwia przechowywanie notatek
+                                                        w grupach oraz tworzenie notatek odręcznych.
+                                                    </p>
+                                                    <p>
+                                                        <div style="color:green;font-weight:bold;font-size:16px;">Remember the milk</div>
+                                                        Pomoże Ci zapanować nad tysiącem rzeczy do zrobienia
+                                                    </p>
+                                                    <p>
+                                                        <div style="color:green;font-weight:bold;font-size:16px;">Fetchnotes</div>
+                                                        Oznaczaj notatki hashtagami. Współdzielenie notatek z innymi osobami.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-content" style="height:auto">
+                                                <div id="email-editor">ala ma kota</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1-4">
+                                <div class="col-inside">
+                                    <div class="section border">
+                                        <h2><i class="fa fa-envelope-o"></i> Wysłano do</h2>
+                                        <ul>
+                                            <li>2 min. temu - Jan Kowalski (jan.kowalski@gmail.com)</li>
+                                            <li>3 min. temu - Andrzej Nowak (a.nowak@gmail.com)</li>
+                                        </ul>
+                                        <a href="#" class="more">więcej...</a>
+                                        <div class="clr"></div>
+                                    </div>
+
+                                    <div class="section">
+                                        <h2><i class="fa fa-clock-o"></i> Kiedy wysłać</h2>
+                                        <h3>Po zdarzeniu</h3>
+                                        <ul>
+                                            <li>Aktywacja konta przez użytkownika</li>
+                                        </ul>
+                                        <h3>Cyklicznie</h3>
+                                        <ul>
+                                            <li>
+                                                <b>poniedz. - piatek o 17:45</b><br />
+                                                Do wszystkich aktywnych użytkowników
+                                            </li>
+                                            <li>
+                                                <b>sobota o 8:00</b><br />
+                                                Do wszystkich aktywnych użytkowników
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="section" style="margin:30px 0; text-align:right;">
+                                        <a href="#" class="btn">Wyślij teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clr"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="help-container">
+        <div id="help-container-db" style="display:none">
+            <h1>Baza danych</h1>
+            <div class="line"></div>
+            <div class="list-item">
+                <div class="list-item-icon">1</div>
+                <div class="list-item-content">
+                    <b>Dostęp do bazy z JavaScript'u.</b><br>
+                    Za pomocą poniższego kodu pobierzesz artykuł z bazy danych i go zaktualizujesz.
+                    <div class="code">
+                        <span class="comment">//  pobieramy artykuł z bazy o ID = 178</span><br>
+                        var <span class="var">article</span> = new <span class="model">Article</span>(<span class="val">178</span>);<br><br>
+                        <span class="comment">//  wyświetlamy tytuł</span><br>
+                        console.log(<span class="var">article</span>.<span class="attr">title</span>);<br><br>
+
+                        <span class="comment">//  zmieniamy tytuł</span><br>
+                        <span class="var">article</span>.<span class="attr">title</span> = <span class="val">'Nowy tytuł'</span>;<br><br>
+
+                        <span class="comment">//  zapisujemy zmiany</span><br>
+                        <span class="var">article</span>.<span class="attr">save()</span>;
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-item">
+                <div class="list-item-icon">2</div>
+                <div class="list-item-content">
+                    Baza danych <b>informuje o zmianach</b>.<br>
+                    Każdy model posiada metodę <span class="code">onChange()</span> nasłuchującą zmian.
+                    <div class="code">
+                        <span class="var">article</span>.<span class="attr">onChange</span>()<br>
+                        {<br>
+                        adsf<br>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-item">
+                <div class="list-item-icon">3</div>
+                <div class="list-item-content">
+                    Każda operacja przechodzi walidację i sprawdzenie uprawnień -
+                    <b>nikt niepowołany nie może dokonać zmian</b>.
+                </div>
+            </div>
+        </div>
+
+        <div id="help-container-db" style="display:none">
+            <h1>Podgląd</h1>
+            <div class="line"></div>
+
+            <div class="list-item">
+                <div class="list-item-icon">1</div>
+                <div class="list-item-content">
+                    Na zakładkach jest uruchomionych kilka instancji przykładowej strony.
+                </div>
+            </div>
+
+            <div class="list-item">
+                <div class="list-item-icon">2</div>
+                <div class="list-item-content">
+                    Możesz edytować zachowanie strony używając formularza z lewej strony.
+                </div>
+            </div>
+
+            <div class="list-item">
+                <div class="list-item-icon">3</div>
+                <div class="list-item-content">
+                    Możesz uruchomić stronę na osobnej zakładce klikając tutaj:<br />
+                    <a href="#" style="margin:20px auto; text-align:center; display:block;">goo.gl/adg356s</a>
+                    Lub skanując poniższy kod:
+                    <img style="display:block; margin:10px auto; width:150px;" src="http://pl.qr-code-generator.com/phpqrcode/getCode.php?cht=qr&chl=asdfasdfasdfsadfasfasdfasdfasdfsadf&chs=180x180&choe=UTF-8&chld=L|0" />
+                </div>
+            </div>
+        </div>
+
+        <div id="help-container-search" style="display:none">
+            <h1>Wyszukiwarka</h1>
+            <div class="line"></div>
+
+            <div class="list-item">
+                <div class="list-item-icon">1</div>
+                <div class="list-item-content">
+                    W Panelu Administracyjnym <b>definiujesz parametry wyszukiwania</b>.
+                </div>
+            </div>
+
+            <div class="list-item">
+                <div class="list-item-icon">2</div>
+                <div class="list-item-content">
+                    Na swojej stronie <b>zamieszczasz kod JavaScript, który obsłuży wyszukiwanie</b>.
+                </div>
+            </div>
+
+        </div>
+
+        <div id="help-container-communication-channels" style="display:none">
+            <h1>Kanały komunikacyjne</h1>
+            <div class="line"></div>
+
+            <div class="list-item">
+                <div class="list-item-icon">1</div>
+                <div class="list-item-content">
+                    W Panelu Administracyjnym <b>definiujesz parametry wyszukiwania</b>.
+                </div>
+            </div>
+
+            <div class="list-item">
+                <div class="list-item-icon">2</div>
+                <div class="list-item-content">
+                    Na swojej stronie <b>zamieszczasz kod JavaScript, który obsłuży wyszukiwanie</b>.
+                </div>
+            </div>
+
+        </div>
+
+        <div id="help-container-communication-channels" style="display:none">
+            <h1>Twoje serwery</h1>
+            <div class="line"></div>
+
+            <div class="list-item">
+                <div class="list-item-icon">1</div>
+                <div class="list-item-content">
+                    Bla bla bla
+                </div>
+            </div>
+
+            <div class="list-item">
+                <div class="list-item-icon">2</div>
+                <div class="list-item-content">
+                    Bla bla bla
+                </div>
+            </div>
+        </div>
+
+        <div id="help-container-communication-channels" style="display:block">
+            <h1>Wysyłanie e-maili</h1>
+            <div class="line"></div>
+
+            <div class="list-item">
+                <div class="list-item-icon">1</div>
+                <div class="list-item-content">
+                    <b>W Panelu Administracyjnym definiujesz skórki e-maili</b>, np. wiadomości rejestracyjne, newsletter lub informujące o nowym artykule.
+                </div>
+            </div>
+
+            <div class="list-item">
+                <div class="list-item-icon">2</div>
+                <div class="list-item-content">
+                    <b>Tworzysz zdarzenia po których mają zostać wysłane wybrane e-maile</b>, np. rejestracja użytkownika lub dodanie nowego artykułu. <br /><b>E-maile mogę być również wysyłane cykliczne</b>, np. codziennie o 5:00 rano.
+                </div>
+            </div>
+
+            <div class="list-item">
+                <div class="list-item-icon">3</div>
+                <div class="list-item-content">
+                    Po wykonaniu zdarzenia e-mail jest wysyłany.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

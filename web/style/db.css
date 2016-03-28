@@ -1,0 +1,209 @@
+body {
+    margin:0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    width:500px;
+    margin:0 auto;
+}
+
+.btn {
+    cursor:pointer;
+    padding:7px 10px;
+    border:1px solid #F9A825;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    background-color:#FDD835;
+    -webkit-box-shadow: 0px 3px 10px 0 rgba(197, 168, 96, 0.95);
+    box-shadow: 0px 3px 10px 0 rgba(197, 168, 96, 0.95);
+    color:#F57F17;
+    text-align:center;
+
+    -webkit-transition: background,color 300ms ease;
+    -moz-transition: background,color 300ms ease;
+    -ms-transition: background,color 300ms ease;
+    -o-transition: background,color 300ms ease;
+    transition: background,color 300ms ease;
+
+}
+
+.btn:hover {
+    background-color:#FBC02D;
+    -webkit-box-shadow: 0px 3px 10px 0 rgba(166, 147, 100, 0.95);
+    box-shadow: 0px 3px 10px 0 rgba(166, 147, 100, 0.95);
+
+    color:#FFF176;
+}
+
+#top {
+    background-color:#FFEB3B;
+    font-size:16px;
+    padding:5px;
+    -webkit-box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.8);
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index: 1;
+}
+
+#top .btn {
+    display:inline-block;
+}
+
+#top label {
+    cursor:pointer;
+}
+
+#top #listen-container {
+    color:#F57F17;
+    display:inline-block;
+    float:right;
+    margin:7px;
+}
+#top #listen-container input[type="checkbox"] {
+    margin: 5px 3px 3px;
+}
+
+#content {
+    color: #1D1D1D;
+    font-weight: 300;
+    font-size: 15px;
+    margin:60px 0;
+}
+
+.article {
+    background-color:#FFF9C4;
+    padding:10px;
+    margin-bottom:10px;
+    position:relative;
+}
+
+.article .edit {
+    position:absolute;
+    top:10px;
+    right:10px;
+    color:gray;
+    cursor:pointer;
+}
+
+.article .edit:hover {
+    color:black;
+}
+
+h2 {
+    margin:5px 0 10px;
+    color:#F57F17;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+p {
+    margin:0;
+}
+
+#wiki {
+    font-size:12px;
+    color:gray;
+    text-align:center;
+}
+
+#create-new {
+    position:fixed;
+    bottom:100px;
+    right:50%;
+    margin-right:-260px;
+    font-weight:bold;
+    padding:7px 10px 5px;
+    color:rgba(0, 0, 0, 0.4);
+}
+
+form {
+    width: 400px;
+    position: fixed;
+    top: 70px;
+    bottom: 50px;
+    background-color: rgba(48, 48, 48, 0.77);
+    left: 50%;
+    margin-left: -200px;
+    padding:10px;
+    display:none;
+}
+
+form input[type="text"], form textarea {
+    width:375px;
+    font-size:16px;
+    padding:5px;
+    color:#282828;
+    border:1px solid black;
+    margin:5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+form textarea {
+    position:absolute;
+    top:60px;
+    bottom:50px;
+}
+
+form input[type="submit"] {
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    font-size:14px;
+}
+
+form a {
+    position:absolute;
+    left:20px;
+    bottom:20px;
+    font-size:14px;
+    color:lightgray;
+    text-decoration:none;
+}
+
+form a:hover {
+    color:white;
+}
+
+
+@media (max-width: 300px) {
+    h2 {
+        font-size:14px;
+        margin:3px 0;
+    }
+    p {
+        font-size:11px;
+    }
+    .container {
+        width:250px;
+    }
+    .article {
+        padding:3px 8px;
+    }
+    #create-new {
+        right:10px;
+        bottom:30px;
+        margin-right:0;
+    }
+
+    form {
+        width:240px;
+        margin-left:-125px;
+        padding:5px;
+    }
+    form input[type="text"], form textarea {
+        width:220px;
+        font-size:12px;
+    }
+
+    form textarea {
+        top:40px;
+        left:5px;
+        right:5px;
+    }
+
+}

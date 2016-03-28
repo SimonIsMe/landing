@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Przeglądaj artykuły</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+    <link rel="stylesheet" href="/style/db.css">
+    <script type="text/javascript" src="/js/db.js"></script>
+</head>
+<body>
+<div id="top">
+    <div class="container">
+        <div id="listen-container">
+            <label for="listen">Nasłuchuj zmian</label>
+            <input type="checkbox" id="listen" name="listen" checked>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <div class="article" id="art_1">
+            <div class="edit" title="Edytuj"><i class="fa fa-pencil-square-o"></i></div>
+            <h2>Microsoft Windows</h2>
+            <p>Rodzina systemów operacyjnych wyprodukowanych przez firmę Microsoft. Systemy rodziny Windows działają na serwerach, systemach wbudowanych oraz na komputerach osobistych, z którymi są najczęściej kojarzone.</p>
+        </div>
+        <div class="article" id="art_2">
+            <div class="edit" title="Edytuj"><i class="fa fa-pencil-square-o"></i></div>
+            <h2>Linux</h2>
+            <p>Rodzina uniksopodobnych systemów operacyjnych opartych na jądrze Linux. Linux jest jednym z przykładów wolnego i otwartego oprogramowania (FLOSS): jego kod źródłowy może być dowolnie wykorzystywany, modyfikowany i rozpowszechniany.</p>
+        </div>
+        <div class="article" id="art_3">
+            <div class="edit" title="Edytuj"><i class="fa fa-pencil-square-o"></i></div>
+            <h2>PHP</h2>
+            <p>Interpretowany skryptowy język programowania zaprojektowany do generowania stron internetowych i budowania aplikacji webowych w czasie rzeczywistym.</p>
+        </div>
+        <div class="article" id="art_4">
+            <div class="edit" title="Edytuj"><i class="fa fa-pencil-square-o"></i></div>
+            <h2>Liczby Catalana</h2>
+            <p>Szczególny ciąg liczbowy, mający zastosowanie w różnych aspektach kombinatoryki. Nazwane zostały na cześć belgijskiego matematyka Eugène Charlesa Catalana (1814–1894)[1]. Bywają również nazywane liczbami Segnera, na cześć Jána Andreja Segnera (1704-1777), matematyka pochodzącego z Karpat Niemieckich.</p>
+        </div>
+        <div class="article" id="art_5">
+            <div class="edit" title="Edytuj"><i class="fa fa-pencil-square-o"></i></div>
+            <h2>Liczby Fibonacciego</h2>
+            <p>ciąg liczb naturalnych określony rekurencyjnie w sposób następujący: pierwszy wyraz jest równy 0, drugi jest równy 1, każdy następny jest sumą dwóch poprzednich.</p>
+        </div>
+        <div class="article" id="art_6">
+            <div class="edit" title="Edytuj"><i class="fa fa-pencil-square-o"></i></div>
+            <h2>Wielka Brytania</h2>
+            <p>Unitarne państwo wyspiarskie położone w Europie Zachodniej. W skład Wielkiej Brytanii wchodzą: Anglia, Walia i Szkocja położone na wyspie Wielka Brytania oraz Irlandia Północna leżąca w północnej części wyspy Irlandia. Na wyspie tej znajduje się jedyna granica lądowa Zjednoczonego Królestwa z innym państwem – Irlandią. Poza nią Wielka Brytania otoczona jest przez Ocean Atlantycki na zachodzie i północy, Morze Północne na wschodzie, Kanał Angielski (ang. English Channel; fr. La Manche) na południu i Morze Irlandzkie na zachodzie.</p>
+        </div>
+        <div class="article" id="art_7">
+            <div class="edit" title="Edytuj"><i class="fa fa-pencil-square-o"></i></div>
+            <h2>Polska</h2>
+            <p>Państwo unitarne w Europie Środkowej położone między Morzem Bałtyckim na północy a Sudetami i Karpatami na południu, w przeważającej części w dorzeczu Wisły i Odry. Powierzchnia administracyjna Polski wynosi 312 679 km², co daje jej 70. miejsce na świecie i 9. w Europie. Zamieszkana przez prawie 38,5 miliona ludzi (2014), zajmuje pod względem liczby ludności 34. miejsce na świecie, a 6. w Unii Europejskiej.</p>
+        </div>
+        <div class="article" id="art_8">
+            <div class="edit" title="Edytuj"><i class="fa fa-pencil-square-o"></i></div>
+            <h2>Hiszpania</h2>
+            <p>Państwo w Europie Południowej, największe z trzech państw położonych na Półwyspie Iberyjskim. Na zachodzie Hiszpania graniczy z Portugalią, na południu z należącym do Wielkiej Brytanii Gibraltarem, oraz przez Ceutę i Melillę z Marokiem. Na północnym wschodzie, przez Pireneje, kraj graniczy z Francją i Andorą.</p>
+        </div>
+        <div class="article" id="art_9">
+            <div class="edit" title="Edytuj"><i class="fa fa-pencil-square-o"></i></div>
+            <h2>Włochy</h2>
+            <p>Państwo położone w Europie Południowej, na Półwyspie Apenińskim, będące członkiem Unii Europejskiej oraz wielu organizacji, m.in.: NATO, należące do siedmiu najbardziej uprzemysłowionych i bogatych państw świata – G7</p>
+        </div>
+        <div class="article" id="art_10">
+            <div class="edit" title="Edytuj"><i class="fa fa-pencil-square-o"></i></div>
+            <h2>Brazylia</h2>
+            <p>Największe pod względem powierzchni i liczby mieszkańców państwo Ameryki Południowej oraz piąte pod względem wielkości państwo świata. Zajmuje ponad 47,5% powierzchni Ameryki Południowej i liczy ponad 200 milionów mieszkańców.</p>
+        </div>
+        <div id="wiki">
+            Wszystkie treści pochodzą z Wikipedii.
+        </div>
+    </div>
+</div>
+<div class="btn" id="create-new" title="Dodaj nowy artykuł">
+    Dodaj artykuł
+    <i class="fa fa-plus"></i>
+</div>
+
+<form>
+    <input type="text" name="title" required placeholder="Tytuł"/>
+    <textarea placeholder="Treść" required></textarea>
+    <input type="submit" value="Zapisz">
+    <a href="#">Anuluj</a>
+</form>
+
+</body>
+</html>

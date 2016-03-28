@@ -1,0 +1,89 @@
+# This is where you edit Shield's users.
+# Passwords are hashed (in your browser) before being saved.
+#
+# Click "New User" to get a randomly generated password.
+# Then copy it somewhere: When you save,
+# the clear text password disappears. Saved passwords
+# cannot be recovered.
+#
+# A hash is e.g. "$2a$12$xoBo...". It is not the password itself,
+# but a safe way to store it. If you need to reset a password,
+# replace the hash with your new password and then click save.
+
+admin: 87jjj7pg3t0ng2s821
+readwrite: u3evec95glohdrk1oe
+readonly: 7co55tw3sh5pp2crww
+
+*----------------------------------------------------------------------------------------------------------------
+# This editor maps roles to users of that role, like this:
+# role_name: user1, user2
+
+admin: admin
+readwrite: readwrite
+readonly: readonly
+
+
+*----------------------------------------------------------------------------------------------------------------
+# This is the editor for all the roles.
+# Following are some sample roles. To actually use a role, map a user in the above editor.
+
+# Admins can do everything
+admin:
+  cluster: all
+  indices:
+    '*': all
+
+# Monitoring cluster privileges
+# All operations on all indices
+readwrite:
+  cluster: monitor
+  indices:
+    '*': all
+
+# Only read operations on indices
+readonly:
+  cluster: monitor
+  indices:
+    '*': read
+
+# A user with the kibana4 role can update dashboards and read any index,
+# but not write to them. Note that upgrading Kibana will not automatically
+# upgrade your Shield configuration, so remember to check the changelogs
+# when upgrading.
+kibana4:
+  cluster:
+      - cluster:monitor/nodes/info
+      - cluster:monitor/health
+  indices:
+    # If you want to limit the user to specific indexes, change
+    # this part
+    '*':
+      - indices:admin/mappings/fields/get
+      - indices:admin/validate/query
+      - indices:data/read/search
+      - indices:data/read/msearch
+      - indices:admin/get
+      - indices:data/read/field_stats
+    '.kibana':
+      - indices:admin/exists
+      - indices:admin/mapping/put
+      - indices:admin/mappings/fields/get
+      - indices:admin/refresh
+      - indices:admin/validate/query
+      - indices:data/read/get
+      - indices:data/read/mget
+      - indices:data/read/search
+      - indices:data/write/delete
+      - indices:data/write/index
+      - indices:data/write/update
+      - indices:admin/create
+
+# Sample that lets a user only be able to write to a log index
+#logging:
+#  indices:
+#    'logstash-*': write
+
+# Sample role that lets an unauthenticated user access the
+# cluster health API:
+# anonymous:
+#   cluster: cluster:monitor/health
