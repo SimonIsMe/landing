@@ -61,7 +61,9 @@ $app->get('/db', function () use ($app) {
 });
 
 $app->get('/notify', function (Request $request) use ($app) {
-    var_dump($_GET, $_POST);
+
+    file_put_contents('log.txt', "\n\n" . json_encode([$_GET, $_POST]) . "\n\n", FILE_APPEND);
+
     return 'You need to specify a token';
 });
 
