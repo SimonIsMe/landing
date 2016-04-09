@@ -60,6 +60,11 @@ $app->get('/db', function () use ($app) {
     return 'You need to specify a token';
 });
 
+$app->get('/notify', function (Request $request) use ($app) {
+    var_dump($_GET, $_POST);
+    return 'You need to specify a token';
+});
+
 $app->get('/chat/{token}', function ($token) use ($app) {
 
     $names = [
