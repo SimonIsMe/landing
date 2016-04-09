@@ -17,9 +17,9 @@ return [
     ],
 
     'mysql' => [
-        'host'      => '192.168.10.111',
-        'dbname'    => 'nobackend_landing',
-        'user'      => 'nobackend',
-        'password'  => 'nobackend',
+        'host'      => 'sql7.freemysqlhosting.net',
+        'dbname'    => 'sql7114493',
+        'user'      => 'sql7114493',
+        'password'  => 'KaDaMmTs2r',
     ]
 ];
