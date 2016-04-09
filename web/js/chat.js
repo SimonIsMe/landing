@@ -4,7 +4,7 @@ var Chat = {
     token: 'aaa',
     init: function()
     {
-        Chat.ws = new WebSocket('ws://192.168.10.111:8080');
+        Chat.ws = new WebSocket('ws://164.132.230.241:8080');
         Chat.ws.onmessage = function (data)
         {
             var json = JSON.parse(data.data);

@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="768b1e81-4451-463e-b330-c27e2e9e08cf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.php" afterPath="$PROJECT_DIR$/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.twig" afterPath="$PROJECT_DIR$/views/index.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.php" afterPath="$PROJECT_DIR$/web/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/chat.js" afterPath="$PROJECT_DIR$/web/js/chat.js" />
     </list>
     <ignored path="nobackend_landing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,12 +27,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/index.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.913044">
-              <caret line="229" column="14" selection-start-line="229" selection-start-column="14" selection-end-line="229" selection-end-column="14" />
-              <folding />
+            <state vertical-scroll-proportion="0.4436937">
+              <caret line="571" column="93" selection-start-line="571" selection-start-column="93" selection-end-line="571" selection-end-column="93" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -38,30 +42,20 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.826087">
-              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+            <state vertical-scroll-proportion="-10.956522">
+              <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
               <folding>
                 <element signature="e#7#25#0#PHP" expanded="true" />
-                <marker date="1460204160090" expanded="true" signature="1204:1282" placeholder="INSERT INTO emails... " />
-                <marker date="1460204160090" expanded="true" signature="1204:1328" placeholder="INSERT INTO emails... " />
-                <marker date="1460204160090" expanded="true" signature="1204:1347" placeholder="INSERT INTO emails... " />
-                <marker date="1460204160090" expanded="true" signature="1574:1746" placeholder="INSERT INTO messages... " />
-                <marker date="1460204160090" expanded="true" signature="11708:11759" placeholder="SELECT * FRO... collections" />
-                <marker date="1460204160090" expanded="true" signature="11849:11900" placeholder="SELECT * FRO... collections" />
-                <marker date="1460204160090" expanded="true" signature="12004:12066" placeholder="UPDATE colle... " />
-                <marker date="1460204160090" expanded="true" signature="12214:12275" placeholder="SELECT * FRO... collections" />
-                <marker date="1460204160090" expanded="true" signature="12397:12451" placeholder="INSERT INTO collections... " />
+                <marker date="1460210643942" expanded="true" signature="1201:1279" placeholder="INSERT INTO emails... " />
+                <marker date="1460210643942" expanded="true" signature="1201:1325" placeholder="INSERT INTO emails... " />
+                <marker date="1460210643942" expanded="true" signature="1201:1344" placeholder="INSERT INTO emails... " />
+                <marker date="1460210643942" expanded="true" signature="1571:1743" placeholder="INSERT INTO messages... " />
+                <marker date="1460210643942" expanded="true" signature="11911:11962" placeholder="SELECT * FRO... collections" />
+                <marker date="1460210643942" expanded="true" signature="12052:12103" placeholder="SELECT * FRO... collections" />
+                <marker date="1460210643942" expanded="true" signature="12207:12269" placeholder="UPDATE colle... " />
+                <marker date="1460210643942" expanded="true" signature="12417:12478" placeholder="SELECT * FRO... collections" />
+                <marker date="1460210643942" expanded="true" signature="12600:12654" placeholder="INSERT INTO collections... " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36641222">
-              <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -126,16 +120,16 @@
         <option value="$PROJECT_DIR$/web/js/preview.js" />
         <option value="$PROJECT_DIR$/web/style/index_code.css" />
         <option value="$PROJECT_DIR$/communication_server/server.php" />
-        <option value="$PROJECT_DIR$/web/js/chat.js" />
         <option value="$PROJECT_DIR$/web/style/chat.css" />
         <option value="$PROJECT_DIR$/web/style/communication-preview.css" />
         <option value="$PROJECT_DIR$/web/style/index_communication.css" />
         <option value="$PROJECT_DIR$/web/style/index.css" />
         <option value="$PROJECT_DIR$/web/js/index.js" />
-        <option value="$PROJECT_DIR$/views/index.twig" />
-        <option value="$PROJECT_DIR$/web/index.php" />
         <option value="$PROJECT_DIR$/views/chat.twig" />
         <option value="$PROJECT_DIR$/config.php" />
+        <option value="$PROJECT_DIR$/web/js/chat.js" />
+        <option value="$PROJECT_DIR$/web/index.php" />
+        <option value="$PROJECT_DIR$/views/index.twig" />
       </list>
     </option>
   </component>
@@ -239,39 +233,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nobackend_landing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nobackend_landing" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nobackend_landing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nobackend_landing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="composer" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -315,6 +281,7 @@
     <property name="jsx.switch.disabled" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="SearchEverywhereHistoryKey" value="index.&#9;FILE&#9;file:///home/szymon/nobackend_landing/views/index.twig&#10;index.php&#9;FILE&#9;file:///home/szymon/nobackend_landing/web/index.php" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -390,14 +357,32 @@
       <option name="project" value="LOCAL" />
       <updated>1460206133293</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="nowy config">
+      <created>1460207437452</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1460207437452</updated>
+    </task>
+    <task id="LOCAL-00005" summary="pusher notify">
+      <created>1460209410534</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1460209410534</updated>
+    </task>
+    <task id="LOCAL-00006" summary=".">
+      <created>1460209707034</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1460209707034</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1415" y="18" width="1871" height="1062" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16019683" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16019683" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -450,10 +435,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="." />
     <MESSAGE value="missing file" />
     <MESSAGE value="vendor folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="vendor folder" />
+    <MESSAGE value="nowy config" />
+    <MESSAGE value="pusher notify" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -714,13 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/chat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="87" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/style/db.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8117519">
@@ -764,30 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.913044">
-          <caret line="229" column="14" selection-start-line="229" selection-start-column="14" selection-end-line="229" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/chat.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0914037">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/communication_server/server.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2132753">
-          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/style/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.484375">
@@ -812,30 +768,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29007635">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38723403">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/chat.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.695652">
+          <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/communication_server/server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.391304">
+          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.826087">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+        <state vertical-scroll-proportion="-10.956522">
+          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
           <folding>
             <element signature="e#7#25#0#PHP" expanded="true" />
-            <marker date="1460204160090" expanded="true" signature="1204:1282" placeholder="INSERT INTO emails... " />
-            <marker date="1460204160090" expanded="true" signature="1204:1328" placeholder="INSERT INTO emails... " />
-            <marker date="1460204160090" expanded="true" signature="1204:1347" placeholder="INSERT INTO emails... " />
-            <marker date="1460204160090" expanded="true" signature="1574:1746" placeholder="INSERT INTO messages... " />
-            <marker date="1460204160090" expanded="true" signature="11708:11759" placeholder="SELECT * FRO... collections" />
-            <marker date="1460204160090" expanded="true" signature="11849:11900" placeholder="SELECT * FRO... collections" />
-            <marker date="1460204160090" expanded="true" signature="12004:12066" placeholder="UPDATE colle... " />
-            <marker date="1460204160090" expanded="true" signature="12214:12275" placeholder="SELECT * FRO... collections" />
-            <marker date="1460204160090" expanded="true" signature="12397:12451" placeholder="INSERT INTO collections... " />
+            <marker date="1460210643942" expanded="true" signature="1201:1279" placeholder="INSERT INTO emails... " />
+            <marker date="1460210643942" expanded="true" signature="1201:1325" placeholder="INSERT INTO emails... " />
+            <marker date="1460210643942" expanded="true" signature="1201:1344" placeholder="INSERT INTO emails... " />
+            <marker date="1460210643942" expanded="true" signature="1571:1743" placeholder="INSERT INTO messages... " />
+            <marker date="1460210643942" expanded="true" signature="11911:11962" placeholder="SELECT * FRO... collections" />
+            <marker date="1460210643942" expanded="true" signature="12052:12103" placeholder="SELECT * FRO... collections" />
+            <marker date="1460210643942" expanded="true" signature="12207:12269" placeholder="UPDATE colle... " />
+            <marker date="1460210643942" expanded="true" signature="12417:12478" placeholder="SELECT * FRO... collections" />
+            <marker date="1460210643942" expanded="true" signature="12600:12654" placeholder="INSERT INTO collections... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.php">
+    <entry file="file://$PROJECT_DIR$/views/index.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36641222">
-          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-          <folding />
+        <state vertical-scroll-proportion="0.4436937">
+          <caret line="571" column="93" selection-start-line="571" selection-start-column="93" selection-end-line="571" selection-end-column="93" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

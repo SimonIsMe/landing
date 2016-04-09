@@ -18,7 +18,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
         'dbname'    => $config['mysql']['dbname'],
         'user'      => $config['mysql']['user'],
         'password'  => $config['mysql']['password'],
-        'charset'   => 'utf8mb4',
+        'charset'   => 'utf8',
     ),
 ));
 $app['debug'] = true;
