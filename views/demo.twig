@@ -12,9 +12,11 @@
     <script src="/js/demo.js"></script>
     <script src="/js/db-preview.js"></script>
     <script src="/js/email-preview.js"></script>
+    <script src="/js/preview.js"></script>
     <link rel="stylesheet" href="/style/demo.css">
     <link rel="stylesheet" href="/style/index_code.css">
     <link rel="stylesheet" href="/style/db-preview.css">
+    <link rel="stylesheet" href="/style/preview.css">
 </head>
 <body>
     <div id="page-container">
@@ -34,7 +36,15 @@
 
                 <div class="tab-content-container" style="left:0;right:0;bottom:40px;top:41px;">
                     <div class="tab-content active">
-                        1
+                        <div class="column-container">
+                            <div class="col-1-4">
+                                a
+                            </div>
+                            <div class="col-3-4">
+                                <iframe src="http://ii.uni.wroc.pl"></iframe>
+                            </div>
+                            <div class="clr"></div>
+                        </div>
                     </div>
                     <div class="tab-content">
                         2
@@ -45,8 +55,6 @@
                 <ul class="tabs">
                     <li class="active">Baza danych</li>
                     <li>Wyszukiwarka</li>
-                    <li>Kanały komunikacyjne</li>
-                    <li>Twoje serwery</li>
                     <li>E-maile</li>
                     <div class="clr"></div>
                 </ul>
@@ -58,7 +66,7 @@
                                 <div class="col-inside border">
                                     <h2><i class="fa fa-eye-slash"></i> Podgląd</h2>
                                     <div id="db-preview">
-                                        <div class="table active" id="articles-table" data-details="db-details-articles">
+                                        <div class="table" id="articles-table" data-details="db-details-articles">
                                             <div class="table-name">articles</div>
                                             <div class="table-column id" data-details="db-details-articles-id">
                                                 <i class="fa fa-key"></i>
@@ -87,9 +95,14 @@
                                             </div>
                                             <div class="table-column" data-details="db-details-comments-article-id">article_id - int(11)</div>
                                             <div class="table-column" data-details="db-details-comments-user-id">user_id - int(11)</div>
-                                            <div class="table-column active" data-details="db-details-comments-content">content - varchar(255)</div>
+                                            <div class="table-column" data-details="db-details-comments-content">content - varchar(255)</div>
                                             <div class="table-column" data-details="db-details-comments-created-at">created_at - datetime</div>
                                         </div>
+
+                                        <div class="db-line" id="articles-comments-id-top-right"></div>
+                                        <div class="db-line" id="articles-comments-id-bottom"></div>
+                                        <div class="db-line" id="users-comments-id-top-right"></div>
+                                        <div class="db-line" id="users-comments-id-bottom"></div>
                                     </div>
                                 </div>
 
@@ -99,6 +112,9 @@
                                 <div class="col-inside border">
                                     <div class="section">
                                         <h2><i class="fa fa-cogs"></i> Ustawienia</h2>
+                                        <div class="db-details" style="display:block">
+                                            Wybierz tabelę lub kolumnę z lewej strony.
+                                        </div>
                                         <div class="db-details" id="db-details-articles">
                                             <h3>Tabela <b>articles</b></h3>
                                             <div class="row">
@@ -815,28 +831,6 @@
 
                             <div class="col-1-4">
                                 <div class="col-inside">
-                                    <div class="section border">
-                                        <h2><i class="fa fa-pie-chart"></i> Statystyki</h2>
-                                        <div class="row">
-                                            <div class="left-element">
-                                                Aktywnych połączeń klienckich
-                                            </div>
-                                            <div class="right-element">
-                                                12
-                                            </div>
-                                            <div class="clr"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="left-element">
-                                                Aktywnych połączeń serwerowych
-                                            </div>
-                                            <div class="right-element">
-                                                1
-                                            </div>
-                                            <div class="clr"></div>
-                                        </div>
-                                    </div>
-
                                     <div class="section">
                                         <h2><i class="fa fa-bars"></i> Ostatnie czynności</h2>
                                         <ul>
@@ -856,102 +850,93 @@
                                 <div class="col-inside border">
                                     <div class="section">
                                         <h2><i class="fa fa-bars"></i> Lista</h2>
-                                        <ul>
-                                            <li>Artykuy <i class="fa fa-pencil"></i></li>
-                                            <li>Komentarze</li>
+                                        <ul class="link-list">
+                                            <li>Artykuły</li>
+                                            <li class="active">Komentarze</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1-4">
-                                <div class="col-inside border">
-                                    <div class="section">
-                                        <h2><i class="fa fa-cogs"></i> Ustawienia</h2>
-                                        <form>
-                                            <div class="field-container">
-                                                <div class="label">Nazwa wyszukiwarki</div>
-                                                <input type="text" name="search_name" />
+                            <div class="col-3-4">
+                                <div class="column-container">
+                                    <div class="col-1-2">
+                                        <div class="col-inside border">
+                                            <div class="section">
+                                                <h2><i class="fa fa-cogs"></i> Ustawienia</h2>
+                                                <form>
+                                                    <div class="field-container">
+                                                        <div class="label">Nazwa wyszukiwarki</div>
+                                                        <input type="text" name="search_name" />
+                                                    </div>
+
+                                                    <div class="field-container">
+                                                        <div class="label">Pola do wyszukiwania</div>
+                                                        Tabela <b>articles</b>: <br />
+                                                        <input type="checkbox" /> id<br />
+                                                        <input type="checkbox" /> title<br />
+                                                        <input type="checkbox" /> content<br /><br />
+
+                                                        Tabela <b>comments</b>: <br />
+                                                        <input type="checkbox" /> id<br />
+                                                        <input type="checkbox" /> article_id<br />
+                                                        <input type="checkbox" /> user_id<br />
+                                                        <input type="checkbox" /> content<br />
+                                                        <input type="checkbox" /> created_at<br /><br />
+
+                                                        Tabela <b>users</b>: <br />
+                                                        <input type="checkbox" /> id<br />
+                                                        <input type="checkbox" /> email<br />
+                                                        <input type="checkbox" /> created_at<br />
+                                                    </div>
+                                                </form>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1-2">
+                                        <div class="col-inside">
+                                            <div class="section">
 
-                                            <div class="field-container">
-                                                <div class="label">Pola do wyszukiwania</div>
-                                                Tabela <b>articles</b>: <br />
-                                                <input type="checkbox" /> id<br />
-                                                <input type="checkbox" /> title<br />
-                                                <input type="checkbox" /> content<br /><br />
+                                                <div class="field-container">
+                                                    <div class="label">Podatność na literówki</div>
+                                                    <input type="radio" name="fuzzy" value="0" /> 0 - brak literówek <br />
+                                                    <input type="radio" name="fuzzy" value="1" /> 1 znak<br />
+                                                    <input type="radio" name="fuzzy" value="2" /> 2 znaki<br />
+                                                    <input type="radio" name="fuzzy" value="3" /> 3 znaki<br />
+                                                    <input type="radio" name="fuzzy" value="4" /> 4 znaki<br />
+                                                    <input type="radio" name="fuzzy" value="5" /> 5 znaków<br />
+                                                </div>
 
-                                                Tabela <b>comments</b>: <br />
-                                                <input type="checkbox" /> id<br />
-                                                <input type="checkbox" /> article_id<br />
-                                                <input type="checkbox" /> user_id<br />
-                                                <input type="checkbox" /> content<br />
-                                                <input type="checkbox" /> created_at<br /><br />
+                                                <div class="field-container">
+                                                    <div class="label">Tokenizer</div>
+                                                    <input type="radio" name="tokenizer" value="0" /> domyślny<br />
+                                                    <input type="radio" name="tokenizer" value="0" /> literowy<br />
+                                                    <input type="radio" name="tokenizer" value="0" /> 5 znaków<br />
+                                                </div>
 
-                                                Tabela <b>users</b>: <br />
-                                                <input type="checkbox" /> id<br />
-                                                <input type="checkbox" /> email<br />
-                                                <input type="checkbox" /> created_at<br />
+                                                <div class="field-container">
+                                                    <div class="label">Token filter</div>
+                                                    <input type="radio" name="tokenizer" value="0" /> domyślny<br />
+                                                    <input type="radio" name="tokenizer" value="0" /> ASCII<br />
+                                                    <input type="radio" name="tokenizer" value="0" /> Trim<br />
+                                                </div>
+
+                                                <div class="field-container">
+                                                    <div class="label">Język</div>
+                                                    <select name="language">
+                                                        <option value="pl selected">polski</option>
+                                                        <option value="pl">angielski</option>
+                                                        <option value="pl">niemiecki</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="field-container">
+                                                    <input type="submit" value="Zapisz" />
+                                                </div>
                                             </div>
-
-                                            <div class="field-container">
-                                                <div class="label">Podatność na literówki</div>
-                                                <input type="radio" name="fuzzy" value="0" /> 0 - brak literówek <br />
-                                                <input type="radio" name="fuzzy" value="1" /> 1 znak<br />
-                                                <input type="radio" name="fuzzy" value="2" /> 2 znaki<br />
-                                                <input type="radio" name="fuzzy" value="3" /> 3 znaki<br />
-                                                <input type="radio" name="fuzzy" value="4" /> 4 znaki<br />
-                                                <input type="radio" name="fuzzy" value="5" /> 5 znaków<br />
-                                            </div>
-
-                                            <div class="field-container">
-                                                <div class="label">Tokenizer</div>
-                                                <input type="radio" name="tokenizer" value="0" /> domyślny<br />
-                                                <input type="radio" name="tokenizer" value="0" /> literowy<br />
-                                                <input type="radio" name="tokenizer" value="0" /> 5 znaków<br />
-                                            </div>
-
-                                            <div class="field-container">
-                                                <div class="label">Token filter</div>
-                                                <input type="radio" name="tokenizer" value="0" /> domyślny<br />
-                                                <input type="radio" name="tokenizer" value="0" /> ASCII<br />
-                                                <input type="radio" name="tokenizer" value="0" /> Trim<br />
-                                            </div>
-
-                                            <div class="field-container">
-                                                <div class="label">Język</div>
-                                                <select name="language">
-                                                    <option value="pl selected">polski</option>
-                                                    <option value="pl">angielski</option>
-                                                    <option value="pl">niemiecki</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="field-container">
-                                                <input type="submit" value="Zapisz" />
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1-2">
-                                <div class="col-inside">
-                                    <h2><i class="fa fa-pie-chart"></i> Statystyki</h2>
-                                </div>
-                            </div>
-                            <div class="clr"></div>
-                        </div>
-                    </div>
-                    <div class="tab-content">
-                        <div class="column-container">
-                            <div class="col-1-4">lista kanałów</div>
-                            <div class="clr"></div>
-                        </div>
-                    </div>
-                    <div class="tab-content">
-                        <div class="column-container">
-                            <div class="col-1-4">lista</div>
-                            <div class="col-1-4">ustawienia</div>
-                            <div class="col-1-2">statystyki</div>
                             <div class="clr"></div>
                         </div>
                     </div>
@@ -1010,7 +995,35 @@
                                                 </div>
                                             </div>
                                             <div class="tab-content" style="height:auto">
-                                                <div id="email-editor">ala ma kota</div>
+                                                <div id="email-editor" class="code">
+                                                    <span class="div">
+                                                    &lt;p
+                                                    </span>
+                                                    <span class="div-attr">style=</span><span class="div-val">"color:#811881; font-weight:bold; font-size:18px;"</span><span class="div">&gt;</span><br />
+                                                        &emsp;Cześć { first_name }!<br />
+                                                    <span class="div">&lt;/p&gt;</span><br />
+                                                    <span class="div">&lt;p&gt;</span><br />
+                                                        &emsp;Specjalnie dla Ciebie i Twojego zespołu przygotowaliśmy<br />
+                                                        &emsp;zestaw 4 niesamowitych narzędzi do przechowywania notatek.<br />
+                                                    <span class="div">&lt;/p&gt;</span><br />
+                                                    <span class="div">&lt;p&gt;</span><br />
+                                                        &emsp;<span class="div">&lt;div</span> <span class="div-attr">style=</span><span class="div-val">"color:green; font-weight:bold; font-size:16px;</span>"<span class="div">&gt;</span>Google Keep<span class="div">&lt;/div&gt;</span><br />
+                                                        &emsp;Notatki i listy w jednym miejscu. Bardzo proste narzędzie.<br />
+                                                    <span class="div">&lt;/p&gt;</span><br />
+                                                    <span class="div">&lt;p&gt;</span><br />
+                                                        &emsp;<span class="div">&lt;div</span> <span class="div-attr">style=</span><span class="div-val">"color:green; font-weight:bold; font-size:16px;</span>"<span class="div">&gt;</span>Evernote<span class="div">&lt;/div&gt;</span><br />
+                                                        &emsp;Bardziej rozbudowane narzędzie. Umożliwia przechowywanie notatek<br />
+                                                        &emsp;w grupach oraz tworzenie notatek odręcznych.<br />
+                                                    <span class="div">&lt;/p&gt;</span><br />
+                                                    <span class="div">&lt;p&gt;</span><br />
+                                                        &emsp;<span class="div">&lt;div</span> <span class="div-attr">style=</span><span class="div-val">"color:green; font-weight:bold; font-size:16px;</span>"<span class="div">&gt;</span>Remember the milk<span class="div">&lt;/div&gt;</span><br />
+                                                        &emsp;Pomoże Ci zapanować nad tysiącem rzeczy do zrobienia<br />
+                                                    <span class="div">&lt;/p&gt;</span><br />
+                                                    <span class="div">&lt;p&gt;</span><br />
+                                                    &emsp;<span class="div">&lt;div</span> <span class="div-attr">style=</span><span class="div-val">"color:green; font-weight:bold; font-size:16px;</span>"<span class="div">&gt;</span>Fetchnotes<span class="div">&lt;/div&gt;</span><br />
+                                                        &emsp;Oznaczaj notatki hashtagami. Współdzielenie notatek z innymi osobami.<br />
+                                                    <span class="div">&lt;/p&gt;</span><br />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1107,7 +1120,7 @@
             </div>
         </div>
 
-        <div id="help-container-db" style="display:none">
+        <div id="help-container-db" style="display:block">
             <h1>Podgląd</h1>
             <div class="line"></div>
 
@@ -1157,45 +1170,6 @@
         </div>
 
         <div id="help-container-communication-channels" style="display:none">
-            <h1>Kanały komunikacyjne</h1>
-            <div class="line"></div>
-
-            <div class="list-item">
-                <div class="list-item-icon">1</div>
-                <div class="list-item-content">
-                    W Panelu Administracyjnym <b>definiujesz parametry wyszukiwania</b>.
-                </div>
-            </div>
-
-            <div class="list-item">
-                <div class="list-item-icon">2</div>
-                <div class="list-item-content">
-                    Na swojej stronie <b>zamieszczasz kod JavaScript, który obsłuży wyszukiwanie</b>.
-                </div>
-            </div>
-
-        </div>
-
-        <div id="help-container-communication-channels" style="display:none">
-            <h1>Twoje serwery</h1>
-            <div class="line"></div>
-
-            <div class="list-item">
-                <div class="list-item-icon">1</div>
-                <div class="list-item-content">
-                    Bla bla bla
-                </div>
-            </div>
-
-            <div class="list-item">
-                <div class="list-item-icon">2</div>
-                <div class="list-item-content">
-                    Bla bla bla
-                </div>
-            </div>
-        </div>
-
-        <div id="help-container-communication-channels" style="display:block">
             <h1>Wysyłanie e-maili</h1>
             <div class="line"></div>
 
@@ -1220,7 +1194,18 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="preview-glass" id="left-glass"></div>
+    <div class="preview-glass" id="top-glass"></div>
+    <div class="preview-glass" id="bottom-glass"></div>
+    <div class="preview-glass" id="right-glass"></div>
+    <div id="glass-hole"></div>
+    <div id="preview-window">
+        <div id="preview-content">Cześć! Szybko zaprezentujemy Tobie główne funkcjonalności</div>
+        <a href="#">Anuluj</a>
+        <a href="#" class="btn">Dalej (<span id="current-step"></span>/<span id="total-steps"></span>)</a>
+        <div class="clr"></div>
     </div>
 </body>
 </html>

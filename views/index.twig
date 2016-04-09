@@ -2,15 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Przeglądaj artykuły</title>
+        <title>Pisz aplikacje bez backend'u!</title>
+
         <link href='https://fonts.googleapis.com/css?family=Roboto:600,500,400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:600,500,400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
         <link rel="stylesheet" href="/style/index.css">
         <link rel="stylesheet" href="/style/index_db.css">
+        <link rel="stylesheet" href="/style/index_communication.css">
         <link rel="stylesheet" href="/style/index_code.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
         <script type="text/javascript" src="/js/index.js"></script>
     </head>
     <body>
@@ -77,12 +80,10 @@
 
                 <div class="column-container">
                     <div class="col-1-2 col-center">
-                        <h3>Główne cechy</h3>
                         <div class="list-item">
                             <div class="list-item-icon">1</div>
                             <div class="list-item-content">
-                                Dostęp do bazy <b>z JavaScript'u</b>.<br />
-                                Za pomocą poniższego kodu pobierzesz artykuł z bazy danych i go zaktualizujesz.
+                                Dostęp do bazy <b>z JavaScript'u</b>.
                                 <div class="code">
                                     <span class="comment">//  pobieramy artykuł z bazy o ID = 178</span><br />
                                     var <span class="var">article</span> = new <span class="model">Article</span>(<span class="val">178</span>);<br /><br />
@@ -103,9 +104,11 @@
                                 Baza danych <b>informuje o zmianach</b>.<br />
                                 Każdy model posiada metodę <span class="code">onChange()</span> nasłuchującą zmian.
                                 <div class="code">
-                                    <span class="var">article</span>.<span class="attr">onChange</span>()<br />
+                                    <span class="var">article</span>.<span class="attr">onChange</span>(<span class="model">changedData</span>)<br />
                                     {<br />
-                                        adsf<br />
+                                    &emsp;&emsp;<span class="comment">//  Zaktualizuj wyśwetlany artykuł.</span><br />
+                                    &emsp;&emsp;$(<span class="val">'#article-id-'</span> + <span class="model">changedData</span>.<span class="attr">id</span>)<br />
+                                    &emsp;&emsp;&emsp;&emsp;.<span class="attr">find</span>(<span class="val">'.title'</span>).<span class="attr">text</span>(<span class="model">changedData</span>.<span class="attr">title</span>);<br />
                                     }
 
                                 </div>
@@ -125,13 +128,9 @@
                 </div>
 
                 <div class="column-container">
-                    <div class="col-1-2 col-center">
-                        <h3>Przykład użycia</h3>
-                        <p class="text-center">
-                            Oto strona z artykułami uruchominą na dwóch urządzeniach.<br />
-                            Możesz swobodnie dodawać i edytować artykuły, które są zapisywane w bazie dancyh..
-                        </p>
-                    </div>
+                    {#<div class="col-center">#}
+                        <h3>Przykład użycia - dodawaj i edytuj artykuły</h3>
+                    {#</div>#}
                     <div class="clr"></div>
 
                     <div id="db-example-container">
@@ -146,11 +145,11 @@
 
                         <div id="db-device-1">
                             <h5>Urządzenie 1</h5>
-                            <iframe src="/db/aaa"></iframe>
+                            <iframe data-src="/db/aaa"></iframe>
                         </div>
                         <div id="db-device-2">
                             <h5>Urządzenie 2</h5>
-                            <iframe src="/db/aaa"></iframe>
+                            <iframe data-src="/db/aaa"></iframe>
                         </div>
 
                         <div id="db-qr-code-container">
@@ -172,7 +171,7 @@
 
 
         <div id="communication" class="section">
-            <div id="communication-section-img"></div>
+            {#<div id="communication-section-img"></div>#}
             <div class="container">
                 <div class="icon"><i class="fa fa-comments-o"></i></div>
                 <div class="component-no">Drugie narzędzie</div>
@@ -183,10 +182,9 @@
 
                 <div class="column-container">
                     <div class="col-1-2 col-center">
-                        <h3>Główne cechy</h3>
                         <div class="list-item">
                             <div class="list-item-icon">1</div>
-                            <div class="list-item-content">Użytkownicy mogą przesyłać między sobą komunikaty</div>
+                            <div class="list-item-content">Użytkownicy przesyłają między sobą komunikaty</div>
                         </div>
                         <div class="list-item">
                             <div class="list-item-icon">2</div>
@@ -199,10 +197,34 @@
 
                 <div class="column-container">
                     <div class="col-1-2 col-center">
-                        <h3>Przykład użycia</h3>
-                        asdasd
+                        <h3>Przykład użycia - komunikator</h3>
                     </div>
                     <div class="clr"></div>
+                </div>
+
+                <div class="clr"></div>
+
+                <div id="communication-example-container">
+                    <div id="communication-device-1">
+                        <h5>Urządzenie 1</h5>
+                        <iframe data-src="/chat/{{ token }}/0?message=Cześć!"></iframe>
+                    </div>
+                    <div id="communication-device-2">
+                        <h5>Urządzenie 2</h5>
+                        <iframe data-src="/chat/{{ token }}/1?message=No hej!"></iframe>
+                    </div>
+
+                    <div id="communication-qr-code-container">
+                        <div id="communication-pop-up-link">
+                            <h5>Otwórz stronę w nowej zakładce</h5>
+                            <br />
+                            <a href="http://nobackend.local/chat/{{ token }}/2" target="_blank">http://goo.gl/mfh6Qu</a>
+                        </div>
+                        <div id="communication-qr-code">
+                            <h5>Otwórz na swoim telefonie</h5>
+                            <img src="http://pl.qr-code-generator.com/phpqrcode/getCode.php?cht=qr&chl=http://nobackend.local/chat/{{ token }}&chs=180x180&choe=UTF-8&chld=L|0" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -222,49 +244,70 @@
 
                 <div class="column-container">
                     <div class="col-1-2 col-center">
-                        <h3>Główne cechy</h3>
                         <div class="list-item">
                             <div class="list-item-icon">1</div>
-                            <div class="list-item-content">W Panelu Administracyjnym definiujesz parametry wyszukiwania.</div>
-                        </div>
-                        <div class="list-item">
-                            <div class="list-item-icon">2</div>
-                            <div class="list-item-content">Na swojej stronie zamieszczasz kod JavaScript, który obsłuży wyszukiwanie.</div>
-                        </div>
-                        <hr style="margin-top:40px;" />
-                    </div>
-                    <div class="clr"></div>
-                </div>
-
-                <div class="column-container">
-                    <div class="col-1-2 col-center">
-                        <h3>Przykład użycia</h3>
-                        asdasd
-                    </div>
-                    <div class="clr"></div>
-                </div>
-
-
-
-                <div class="column-container">
-                    <div class="col-1-2 col-center">
-                        <div class="list-item">
-                            <div class="list-item-icon">1</div>
-                            <div class="list-item-content">Zdefiniuj parametry wyszukiwania.</div>
-                        </div>
-                        <div class="list-item">
-                            <div class="list-item-icon">2</div>
-                            <div class="list-item-content">Zapisz je pod dowolną nazwą.</div>
-                        </div>
-                        <div class="list-item">
-                            <div class="list-item-icon">3</div>
                             <div class="list-item-content">
-                                Zamieść w aplikacji poniższy kod i masz w pełni funkcjonalną wyszukiwarkę!
+                                W Panelu Administracyjnym <b>definiujesz parametry wyszukiwania</b>, np.
+                                <ul>
+                                    <li>język</li>
+                                    <li>podatność na literówki</li>
+                                    <li>ważność wybranych słów</li>
+                                    <li>unikanie wybranych słów (np. spójników)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">2</div>
+                            <div class="list-item-content">
+                                Na swojej stronie <b>zamieszczasz kod JavaScript</b>, który obsłuży wyszukiwanie.
+                                <div class="code">
+                                    <span class="comment">//  fraza do wyszukania</span><br />
+                                    var <span class="var">query</span> = <span class="val">'kraje europejskie'</span>;<br /><br />
+
+                                    <span class="model">noBackend</span>.<span class="attr">search</span>(<br />
+                                    &emsp;&emsp;<span class="val">'wyszukiwarka-kraje'</span>, <span class="comment">//  ID wyszukiwarki</span><br />
+                                    &emsp;&emsp;<span class="var">query</span>, <br />
+                                    &emsp;&emsp;function (<span class="var">data</span>) {<br />
+                                    &emsp;&emsp;&emsp;&emsp;<span class="comment">//  W zmiennej <b><i>data</i></b> znajdują się wyniki <br />
+                                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;wyszukiwania</span><br />
+                                    &emsp;&emsp;}<br />
+                                    )
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="clr"></div>
                 </div>
+
+                {#<div class="column-container">#}
+                    {#<div class="col-1-2 col-center">#}
+                        {#<h3>Przykład użycia - utwórz wyszukiwarkę i użyj jej</h3>#}
+                        {#asdasd#}
+                    {#</div>#}
+                    {#<div class="clr"></div>#}
+                {#</div>#}
+
+
+
+                {#<div class="column-container">#}
+                    {#<div class="col-1-2 col-center">#}
+                        {#<div class="list-item">#}
+                            {#<div class="list-item-icon">1</div>#}
+                            {#<div class="list-item-content">Zdefiniuj parametry wyszukiwania.</div>#}
+                        {#</div>#}
+                        {#<div class="list-item">#}
+                            {#<div class="list-item-icon">2</div>#}
+                            {#<div class="list-item-content">Zapisz je pod dowolną nazwą.</div>#}
+                        {#</div>#}
+                        {#<div class="list-item">#}
+                            {#<div class="list-item-icon">3</div>#}
+                            {#<div class="list-item-content">#}
+                                {#Zamieść w aplikacji poniższy kod i masz w pełni funkcjonalną wyszukiwarkę!#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="clr"></div>#}
+                {#</div>#}
             </div>
         </div>
 
@@ -276,28 +319,31 @@
                     <h2>Własny serwer</h2>
                     <div class="intro-container">
                         <div class="line"></div>
+                        {#<div class="intro">#}
+                            {#Gdy trzeba coś zrobić po stronie serwera.#}
+                        {#</div>#}
+                        {#<div class="line"></div>#}
                     </div>
                 </div>
 
                 <div class="column-container">
                     <div class="col-1-2 col-center">
-                        <h3>Główne cechy</h3>
                         <div class="list-item">
                             <div class="list-item-icon">1</div>
-                            <div class="list-item-content">Gdy musisz zrobić coś po stronie backendu możesz użyć do tego własnego serwera.</div>
+                            <div class="list-item-content">
+                                W prosty sposób możesz <b>podłączyć</b> własny serwer i <b>komunikowac</b> się z nim.
+                            </div>
                         </div>
-                        <hr style="margin-top:40px;" />
+                        <div class="list-item">
+                            <div class="list-item-icon">2</div>
+                            <div class="list-item-content">
+                                Możesz podłączyć <b>dowolną liczbę</b> serwerów.
+                            </div>
+                        </div>
                     </div>
                     <div class="clr"></div>
                 </div>
 
-                <div class="column-container">
-                    <div class="col-1-2 col-center">
-                        <h3>Przykład użycia</h3>
-                        asdasd
-                    </div>
-                    <div class="clr"></div>
-                </div>
             </div>
         </div>
 
@@ -305,15 +351,34 @@
             <div class="container">
                 <div class="container">
                     <div class="icon"><i class="fa fa-line-chart"></i></div>
+                    <div class="component-no">Piąte narzędzie</div>
                     <h2>Balansowanie zużycia</h2>
                     <div class="intro-container">
                         <div class="line"></div>
-                        <div class="intro">
-                            Gdy Twój serwer nie daje rady, dołącz kolejny.<br />
-                            Ruch zostanie skierowany na nie po równo.
-                        </div>
-                        <div class="line"></div>
+                        {#<div class="intro">#}
+                            {#Gdy Twój serwer nie daje rady, dołącz kolejny.<br />#}
+                            {#Ruch zostanie skierowany na nie po równo.#}
+                        {#</div>#}
+                        {#<div class="line"></div>#}
                     </div>
+                </div>
+
+                <div class="column-container">
+                    <div class="col-1-2 col-center">
+                        <div class="list-item">
+                            <div class="list-item-icon">1</div>
+                            <div class="list-item-content">
+                                Gdy Twój serwer nie daje rady, podłącz kolejny.
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">2</div>
+                            <div class="list-item-content">
+                                Ruch zostanie skierowany na nie po równo.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
                 </div>
             </div>
         </div>
@@ -323,7 +388,7 @@
             <div class="container">
                 <div class="container">
                     <div class="icon"><i class="fa fa-envelope-o"></i></div>
-                    <div class="component-no">Piąte narzędzie</div>
+                    <div class="component-no">Szóste narzędzie</div>
                     <h2>Wysyłanie e-maili</h2>
                     <div class="intro-container">
                         <div class="line"></div>
@@ -335,19 +400,24 @@
                         <h3>Główne cechy</h3>
                         <div class="list-item">
                             <div class="list-item-icon">1</div>
-                            <div class="list-item-content"><b>W Panelu Administracyjnym definiujesz skórki e-maili</b>, np. wiadomości rejestracyjne, newsletter lub informujące o nowym artykule.</div>
+                            <div class="list-item-content">W Panelu Administracyjnym <b>definiujesz skórki e-maili</b>, np. wiadomości rejestracyjne, newsletter lub informujące o nowym artykule.</div>
                         </div>
                         <div class="list-item">
                             <div class="list-item-icon">2</div>
                             <div class="list-item-content">
-                                <b>Tworzysz zdarzenia po których mają zostać wysłane wybrane e-maile</b>, np. rejestracja użytkownika lub dodanie nowego artykułu.
-                                <b>E-maile mogę być również wysyłane cykliczne</b>, np. codziennie o 5:00 rano.
+                                <b>Tworzysz zdarzenia po których mają zostać wysłane wybrane e-maile</b>, np. rejestracja użytkownika lub dodanie nowego artykułu.<br />
                             </div>
                         </div>
                         <div class="list-item">
                             <div class="list-item-icon">3</div>
                             <div class="list-item-content">
-                                Po wykonaniu zdarzenia e-mail jest wysyłany.
+                                <b>E-maile mogę być również wysyłane cykliczne</b>, np. codziennie o 11:35.
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-icon">4</div>
+                            <div class="list-item-content">
+                                Po wykryciu zdarzenia e-mail jest wysyłany.
                             </div>
                         </div>
                     </div>
@@ -360,7 +430,7 @@
             <div class="container">
                 <div class="container">
                     <div class="icon"><i class="fa fa-users"></i></div>
-                    <div class="component-no">Szóste narzędzie</div>
+                    <div class="component-no">Siódme narzędzie</div>
                     <h2>Logowanie i rejestracja</h2>
                     <div class="intro-container">
                         <div class="line"></div>
@@ -474,8 +544,9 @@
 
                 <div class="column-container">
                     <div class="col-1-2 col-center">
-                        <form>
-                            <input type="email" placeholder="E-mail" />
+                        <form id="register-form">
+                            <div><i class="fa fa-check"></i> Zapisano</div>
+                            <input type="email" placeholder="E-mail" required />
                             <input type="submit" value="Zapisz się" />
                         </form>
                     </div>
@@ -509,7 +580,11 @@
                         </div>
                         <div class="clr"></div>
                         <textarea placeholder="Treść"></textarea>
-                        <input type="submit" value="Wyślij wiadomość" />
+                        <div style="">
+                            <input type="submit" value="Wyślij wiadomość" />
+                            <div class="confirm"><i class="fa fa-check"></i> Wysłano wiadomość</div>
+                        </div>
+
                     </div>
                 </form>
             </div>

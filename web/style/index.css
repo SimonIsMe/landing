@@ -56,11 +56,13 @@ a:hover {
     color:white;
 }
 
-
+ul {
+    margin:5px 0;
+}
 
 #title-container {
     position:absolute;
-    top:300px;
+    top:200px;
     width:100%;
 }
 #left-arrow, #right-arrow {
@@ -98,7 +100,7 @@ a:hover {
 
 h1 {
     font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-weight:500;
     font-size:48px;
     text-align:center;
     color:White;
@@ -118,6 +120,7 @@ h1 b {
 
 h1 #options span {
     display:none;
+    color:#008ed6;
 }
 h1 #options span.active {
     display:inline;
@@ -431,4 +434,21 @@ iframe {
     left:50%;
     margin-left:400px;
     z-index:1;
+}
+
+#register-form {
+    height:50px;
+}
+
+#register-form > div, .confirm {
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: #21A921;
+    display:none;
+}
+#register-form > input[type="email"] {
+    width:250px;
 }

@@ -1,5 +1,8 @@
 <?php
 
+use Carbon\Carbon;
+use Symfony\Component\HttpFoundation\Request;
+
 require_once __DIR__.'/../vendor/autoload.php';
 
 $config = require __DIR__.'/../config.php';
@@ -33,12 +36,55 @@ $app->get('/demo', function () use ($app) {
     return $app['twig']->render('demo.twig');
 });
 
+$app->post('/register', function (Request $request) use ($app) {
+    $email = $request->get('email', '');
+    $app['db']->executeQuery("INSERT INTO emails (email, created_at) VALUES ('" . addslashes($email) . "', '" . Carbon::now()->format('Y-m-d H:i:s') . "')");
+    return 'ok';
+});
+
+$app->post('/message', function (Request $request) use ($app) {
+    $name = $request->get('name', '');
+    $email = $request->get('email', '');
+    $content = $request->get('content', '');
+
+    $app['db']->executeQuery("INSERT INTO messages (first_name, email, content, created_at) VALUES ('" . $name . "', '" . $email . "', '" . $content . "', '" . Carbon::now()->format('Y-m-d H:i:s') . "')");
+
+    return 'ok';
+});
+
 $app->get('/db/{token}', function ($token) use ($app) {
     return $app['twig']->render('db.twig');
 });
 
 $app->get('/db', function () use ($app) {
     return 'You need to specify a token';
+});
+
+$app->get('/chat/{token}', function ($token) use ($app) {
+
+    $names = [
+        'Szymon', 'Adam', 'Michał', 'Grzesiek', 'Ania', 'Kasia', 'Ola', 'Marta'
+    ];
+
+    return $app['twig']->render('chat.twig', [
+        'token' => $token,
+        'name' => $names[array_rand($names)]
+    ]);
+});
+
+$app->get('/chat/{token}/{nameId}', function (Request $request, $token, $nameId) use ($app) {
+
+    $message = $request->get('message', '');
+
+    $names = [
+        'Szymon', 'Adam', 'Michał', 'Grzesiek', 'Ania', 'Kasia', 'Ola', 'Marta'
+    ];
+
+    return $app['twig']->render('chat.twig', [
+        'token' => $token,
+        'message' => $message,
+        'name' => $names[$nameId % count($names)]
+    ]);
 });
 
 

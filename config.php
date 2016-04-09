@@ -17,7 +17,7 @@ return [
     ],
 
     'mysql' => [
-        'host'      => '192.168.1.111',
+        'host'      => '192.168.10.111',
         'dbname'    => 'nobackend_landing',
         'user'      => 'nobackend',
         'password'  => 'nobackend',

@@ -1,0 +1,158 @@
+body {
+    margin:0;
+    background-color:rgba(0, 0, 0, 0.85);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+
+#top {
+    background-color:#161616;
+    color:white;
+    font-size:20px;
+    font-weight:300;
+    padding:10px 0;
+}
+
+.container {
+    width:500px;
+    margin:0 auto;
+}
+
+#messages-container {
+    position:fixed;
+    bottom:70px;
+    left:0;
+    right:0;
+    top: 50px;
+    overflow: auto;
+}
+
+#messages {
+    width:500px;
+    margin:0 auto;;
+}
+
+.message {
+    padding:10px;
+    margin:15px 10px 15px 50px;
+    background-color:#006192;
+    opacity:1;
+    color:white;
+    font-size:20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    -webkit-box-shadow: 2px 5px 8px 0 #000000;
+    box-shadow: 2px 5px 8px 0 #000000;
+
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+.message.invisible {
+    opacity:0;
+}
+
+.message .user {
+    font-size:14px;
+}
+
+.message:first-child {
+    margin-top:1000px;
+}
+
+.message-from-me {
+    margin:10px 50px 10px 10px;
+    background-color:#008ed6;
+}
+
+form {
+    position:fixed;
+    bottom:0px;
+    background-color:#161616;
+    left:50%;
+    width:500px;
+    margin-left:-250px;
+    padding:10px;
+}
+
+form input[type="text"] {
+    font-size:20px;
+    border:1px solid black;
+    width:400px;
+    background-color: rgba(0, 168, 253, 0.8);
+    color: white;
+    padding: 10px 20px;
+}
+
+form button {
+    font-size:20px;
+    background-color: rgba(0, 142, 214, 1);
+    padding:10px;
+    border:0;
+    border-radius: 3px;
+    color:white;
+    width:50px;
+    float:right;
+    cursor:pointer;
+
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+form button:hover {
+    background-color:white;
+    color:#222222;
+}
+
+@media (max-width: 300px)
+{
+    #top {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .container {
+        width: 280px;
+    }
+
+    /*#messages-container{*/
+        /*margin-top: -200px;*/
+    /*}*/
+
+    #messages {
+        width: 280px;
+    }
+
+
+    .message:first-child {
+        margin-top:0;
+    }
+
+    .message {
+        font-size:16px;
+    }
+
+    .message .user {
+        font-size:12px;
+    }
+
+    form {
+        width: 280px;
+        margin-left: -150px
+    }
+
+    form input[type="text"] {
+        font-size: 16px;
+        padding: 10px;
+        width: 199px;
+    }
+
+    form button {
+        padding: 8px;
+    }
+}

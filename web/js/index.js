@@ -80,10 +80,21 @@ function detect()
     }
 }
 
+
+var interval;
+function runInterval() {
+    interval = setInterval(function(){
+        nextH1();
+    }, 1500)
+}
+
 $(document).ready(function()
 {
-    var interval;
-    runInterval();
+    $('#server').css('height', ($(window).height() + 30) + 'px');
+    $(window).resize(function(){
+        $('#server').css('height', ($(window).height() + 30) + 'px');
+    })
+
     $('#left-arrow').bind('click', prevH1);
     $('#right-arrow').bind('click', nextH1);
     $('#left-arrow').bind('mouseover', function () {
@@ -97,12 +108,6 @@ $(document).ready(function()
         runInterval();
     });
 
-    function runInterval()
-    {
-        interval = setInterval(function(){
-            nextH1();
-        }, 1500)
-    }
 
     var placeholderText;
     $('input, textarea').bind('focusin', function(){
@@ -116,12 +121,50 @@ $(document).ready(function()
     $(window).scroll(function(){
         detect();
     });
+
+
+
+    $('#register-form').bind('submit', function(){
+
+        $('#register-form input[type="submit"]').attr('disabled');
+        var email = $('#register-form input[type="email"]').val();
+        $.post('/register', {email:email});
+
+        $('#register-form input').fadeOut(200, function (){
+            $('#register-form div').fadeIn(200);
+        });
+        return false;
+    });
+
+    $('#contact').bind('submit', function(){
+        $('#contact input[type="submit"]').attr('disabled');
+
+        var name = $('#contact input[type="text"]').val();
+        var email = $('#contact input[type="email"]').val();
+        var content = $('#contact textarea').val();
+
+
+        $.post('/message', {name:name, email:email, content:content});
+
+        $('#contact [type="submit"]').fadeOut(200, function (){
+            $('#contact .confirm').fadeIn(200);
+        });
+        return false;
+    });
+});
+
+$(window).load(function() {
+    runInterval();
+    runIframes();
 });
 
 
-
-
-
+function runIframes()
+{
+    $('iframe').each(function(){
+        $(this).attr('src', $(this).data('src'));
+    });
+}
 
 
 

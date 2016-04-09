@@ -16,6 +16,7 @@ span.code {
     background-color:#111111;
     padding:5px 10px;
     margin:5px 0;
+    overflow:auto;
 }
 
 .comment {
@@ -23,11 +24,11 @@ span.code {
 }
 
 .var {
-    color:#005A00;
+    color:#148114;
 }
 
 .attr {
-    color:#3A953A;
+    color:#63A463;
 }
 
 .val {
@@ -36,4 +37,16 @@ span.code {
 
 .model {
     color:#006395;
+}
+
+.div {
+    color:rgba(255, 255, 0, 0.52);
+}
+
+.div-attr {
+    color: rgba(0, 128, 0, 0.72);
+}
+
+.div-val {
+    color: rgba(255, 165, 0, 0.53);
 }

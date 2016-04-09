@@ -4,6 +4,8 @@
         "twig/twig": "^1.24",
         "elasticsearch/elasticsearch": "1.0",
         "doctrine/dbal": "~2.2",
-        "cboden/ratchet": "0.3.*"
+        "cboden/ratchet": "0.3.*",
+        "nesbot/carbon": "^1.21",
+        "phpmailer/phpmailer": "^5.2"
     }
 }
